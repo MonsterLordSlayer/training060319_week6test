@@ -37,16 +37,22 @@ public class PigLatin {
         stringBuilders.add(stringbuilder);
         for (StringBuilder sb:stringBuilders){
             StringBuilder consonantblock=new StringBuilder();
+            int d=0;
             for (int i=0;i<sb.length();i++){
 
                 if (isConsanant(sb.charAt(i))){
                     consonantblock.append(sb.charAt(i));
-                    sb.replace(i,i+1,"");
-                    i=0;
+                    System.out.println("ds "+sb.charAt(i));
+                    d=i;
+
+
+
+
                 }
 
                 else break;
             }
+            sb.replace(0,d+1,"");
             sb.append(consonantblock);
 
         }
@@ -62,6 +68,6 @@ public class PigLatin {
         return returnphrase.toString();
     }
     public static void main(String[] args){
-        System.out.println(convert("Check"));
+        System.out.println(convert("Check This"));
     }
 }
