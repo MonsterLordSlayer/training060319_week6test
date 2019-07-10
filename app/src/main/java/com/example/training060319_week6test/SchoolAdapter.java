@@ -1,9 +1,11 @@
 package com.example.training060319_week6test;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +32,17 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
     public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) {
         final SchoolAlone itemsSchool=schoolList.get(position);
         holder.tvName.setText(itemsSchool.getSchoolName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent=new Intent(v.getContext(),Main2Activity.class);
+                intent.putExtra("name",itemsSchool.getSchoolName());
+                intent.putExtra("DBN",itemsSchool.getDbn());
+                intent.putExtra("description",itemsSchool.getOverviewParagraph());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
